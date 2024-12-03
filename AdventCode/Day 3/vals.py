@@ -1,6 +1,7 @@
 import re
 vals = open("values.in","r")
-str = vals.readline().strip()
+for i in range(0,6):
+    str += vals.readline().strip()
 product = 1
 # Regular expression to find all instances of mul(x,y)
 pattern = 'mul\(\d+,\d+\)'
