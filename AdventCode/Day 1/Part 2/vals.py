@@ -1,7 +1,5 @@
 vals = open("vals.in","r")
-array = []
-start = []
-end = []
+array,start,end = [],[],[]
 for i in range(0,1000):
     array.append(vals.readline().strip())
 for i in range(0,1000):
@@ -15,5 +13,5 @@ for i in range(0,1000):
     for j in range(0,1000):
         if(end[j] == num):
             count += 1
-    total += (num*count)
+    total += num*count
 print(total)
