@@ -1,4 +1,4 @@
-vals = open("vals.in","r")
+vals = open("val.in","r")
 array = []
 for i in range(0,1000):
     array.append(vals.readline().strip())

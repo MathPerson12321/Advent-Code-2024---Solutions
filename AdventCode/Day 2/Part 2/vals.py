@@ -6,9 +6,6 @@ for i in range(0,1000):
         array.append(a)
 amounttrue = 0
 
-def intconf(n):
-    return int(n)
-
 def check(data,increasing,j):
     if(increasing):
         if(data[j-1] < data[j] and (abs(data[j-1]-data[j])<=3 and abs(data[j-1]-data[j])>=1)):
@@ -21,7 +18,7 @@ def check(data,increasing,j):
 for i in range(0,len(array)):
     array3,array2 = array[i].split(" "),[]
     for x in range(0,len(array3)):
-        array2.append(intconf(array3[x]))
+        array2.append(int(array3[x]))
     increasing = array2[0] < array2[1]
     fully = True
     for j in range(1,len(array2)):
