@@ -19,14 +19,28 @@ for i in range(0,len(list(letters[0]))):
             patterns += 1
         elif(lis[j] == "S" and lis[j+1] == "A" and lis[j+2] == "M" and lis[j+3] == "X"):  
             patterns += 1
-for i in range(0,len(list(letters[0]))-3): #Horizontal
-    for j in range(0,len(letters)-3): #Vertical
-        if(list(letters[j])[i] == "X" and list(letters[j+1])[i+1] == "M" and list(letters[j+2])[i+2] == "A" and list(letters[j+3])[i+3] == "S"):
-            patterns += 1
-        elif(list(letters[j])[i] == "S" and list(letters[j+1])[i+1] == "A" and list(letters[j+2])[i+2] == "M" and list(letters[j+3])[i+3] == "X"):
-            patterns += 1
-        if(list(letters[j])[i] == "X" and list(letters[j-1])[i-1] == "M" and list(letters[j-2])[i-2] == "A" and list(letters[j-3])[i-3] == "S"):
-            patterns += 1
-        elif(list(letters[j])[i] == "S" and list(letters[j-1])[i-1] == "A" and list(letters[j-2])[i-2] == "M" and list(letters[j-3])[i-3] == "X"):
-            patterns += 1
-print(patterns)
+init = patterns
+patterns = 0
+for i in range(0,len(list(letters[0]))): #Horizontal
+    for j in range(0,len(letters)): #Vertical
+        if(j < len(letters)-3 and i < len(list(letters[0]))-3): #Right, down
+            if(list(letters[j])[i] == "X" and list(letters[j+1])[i+1] == "M" and list(letters[j+2])[i+2] == "A" and list(letters[j+3])[i+3] == "S"):
+                patterns += 1
+            elif(list(letters[j])[i] == "S" and list(letters[j+1])[i+1] == "A" and list(letters[j+2])[i+2] == "M" and list(letters[j+3])[i+3] == "X"):
+                patterns += 1
+        if(j > 2 and i > 2): # Left, up
+            if(list(letters[j])[i] == "X" and list(letters[j-1])[i-1] == "M" and list(letters[j-2])[i-2] == "A" and list(letters[j-3])[i-3] == "S"):
+                patterns += 1
+            elif(list(letters[j])[i] == "S" and list(letters[j-1])[i-1] == "A" and list(letters[j-2])[i-2] == "M" and list(letters[j-3])[i-3] == "X"):
+                patterns += 1
+        if(j < len(letters)-3 and i > 2): # Left, down
+            if(list(letters[j])[i] == "X" and list(letters[j+1])[i-1] == "M" and list(letters[j+2])[i-2] == "A" and list(letters[j+3])[i-3] == "S"):
+                patterns += 1
+            elif(list(letters[j])[i] == "S" and list(letters[j+1])[i-1] == "A" and list(letters[j+2])[i-2] == "M" and list(letters[j+3])[i-3] == "X"):
+                patterns += 1
+        if(j > 2 and i < len(list(letters[0]))-3): # Right, up
+            if(list(letters[j])[i] == "X" and list(letters[j-1])[i+1] == "M" and list(letters[j-2])[i+2] == "A" and list(letters[j-3])[i+3] == "S"):
+                patterns += 1
+            elif(list(letters[j])[i] == "S" and list(letters[j-1])[i+1] == "A" and list(letters[j-2])[i+2] == "M" and list(letters[j-3])[i+3] == "X"):
+                patterns += 1
+print(str(init+patterns/2))
