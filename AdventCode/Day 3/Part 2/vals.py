@@ -1,7 +1,7 @@
 import re
 vals = open("values.in","r")
 str = ""
-for i in range(0,1):
+for i in range(0,6):
     str += vals.readline().strip()
 leng = len(str)
 product = 0
@@ -13,42 +13,47 @@ pattern3 = "don\'t\(\)"
 matches = re.findall(pattern,str)
 matchesdo = re.findall(pattern2,str)
 matchesdont = re.findall(pattern3,str)
-doindex,dontindex = [0],[len(str)-1]
+doindex,dontindex = [0],[leng-1]
 for j in matchesdo:
     doindex.append(str.index(j))
+    str = str[:str.index(j)]+str[str.index(j)+1:]
     
 for j in matchesdont:
     dontindex.append(str.index(j))
+    str = str[:str.index(j)]+str[str.index(j)+1:]
     
 doindex.sort()
 dontindex.sort()
 truearray = []
-highestdont = dontindex[0]
-highestdo = doindex[1]
+highestdont = 0
+highestdo = 1
 highindex = 1
-print(doindex)
-print(dontindex)
-for i in range(0,leng):
-    if(i < dontindex[0]):
-        truearray.append(True)
-    else:
-        highindex = len(truearray)-1
-        true = truearray[highindex]
-        if(true):
-            if(highestdont >= i):
-                truearray.append(False)
-                highestdont += 1
-                print(i)
-            else:
-                truearray.append(True)
+for i in range(0,dontindex[0]):
+    truearray.append(True)
+for i in range(dontindex[0],leng):
+    highindex = len(truearray)-1
+    true = truearray[highindex]
+    if true:
+        if(i>dontindex[highestdont] and i < doindex[highestdo]):
+            truearray.append(False)
+            while(highestdo < len(doindex)):
+                if(doindex[highestdo] < doindex[highestdo]):
+                    highestdo += 1
+                else:
+                    break
         else:
-            if(highestdo <= i):
-                highestdo += 1
-                truearray.append(True)
-                print(i)
-            else:
-                truearray.append(False)
-print(truearray)
+            truearray.append(True)
+    else:
+        if(i>dontindex[highestdont] and i < doindex[highestdo]):
+            truearray.append(False)
+        else:
+            while(highestdont < len(dontindex)):
+                if(dontindex[highestdont] < doindex[highestdo]):
+                    highestdont += 1
+                else:
+                    break
+            truearray.append(True)
+
 def productf(i):
     i.pop(0)
     i.pop(0)
@@ -71,6 +76,5 @@ for j in matches:
     i = list(j)
     index = str.index(j)
     if(truearray[index]):
-        print(i)
         product += productf(i)
 print(product)
