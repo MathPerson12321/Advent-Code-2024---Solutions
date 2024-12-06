@@ -72,9 +72,9 @@ while not check(guard):
         else:
             dir += 1
             dir = dir % 4
-positions2 = []
+positions2 = [guard]
 for i in positions:
     if not i in positions2:
         positions2.append(i)
-print(len(positions2))
-
+print(len(positions2)-1)
+                
