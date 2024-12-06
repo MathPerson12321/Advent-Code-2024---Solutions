@@ -5,7 +5,6 @@ for i in range(0,130):
     horizontal.append(vals.readline().strip())
 obs = []
 guard = []
-print(horizontal)
 lengthh = len(horizontal)
 lengthv = len(list(horizontal[0]))
 for i in range(0,lengthv):
@@ -13,7 +12,6 @@ for i in range(0,lengthv):
     for j in range(0,lengthh):
         string += list(horizontal[j])[i]
     vertical.append(string)
-print(vertical)
 
 for i in range(0,lengthh): #Rows
     for j in range(0,lengthv): #Columns
@@ -23,8 +21,6 @@ for i in range(0,lengthh): #Rows
         elif(list(horizontal[i])[j] == "^"):
             guard.append(i)
             guard.append(j)
-print(obs)
-print(guard)
 positions = []
 dir = 1 #1 = forward, 2 = right, 3 = down, 4 = left (like a compass)
 
@@ -80,5 +76,5 @@ positions2 = []
 for i in positions:
     if not i in positions2:
         positions2.append(i)
-print(len(positions2)-1)
-                
+print(len(positions2))
+
