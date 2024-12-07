@@ -24,12 +24,20 @@ for i in range(0,lengthh): #Rows
 count = 0
 def check(guard):
     return (guard[0] < 0 or guard[0] >= lengthh or guard[1] < 0 or guard[1] >= lengthv)
-
+print(guard)
+temp = guard.copy()
+temp[0] -= 1
+firstmoves = [guard.copy(),temp]
+print(firstmoves)
 for i in range(0,lengthh): #Rows
     for j in range(0,lengthv): #Columns
+        print()
+        guard = firstmoves[0]
         obs.append([i,j])
         dir = 1 #1 = forward, 2 = right, 3 = down, 4 = left (like a compass)
-        positions = [guard]
+        positions = [firstmoves[0]]
+        print(positions)
+        print("a")
         brea = False
         while not check(guard) and not brea:
             if(dir == 1):
@@ -39,7 +47,9 @@ for i in range(0,lengthh): #Rows
                         checkres = True
                 if not checkres:
                     guard[0] -= 1
+                    print(positions)
                     positions.append([guard[0],guard[1]])
+                    print(positions)
                 else:
                     dir += 1
                     dir = dir % 4
@@ -77,8 +87,14 @@ for i in range(0,lengthh): #Rows
                     dir += 1
                     dir = dir % 4
             for i in positions:
-                if positions.count(i) >= 3:
-                    count += 1
-                    brea = True
-                    break
+                if(len(positions) > 2):
+                    if positions[len(positions)-2] == firstmoves[0] and positions[len(positions)-2] == firstmoves[1]:
+                        count += 1
+                        print("s")
+                        brea = True
+                        break
+            print(positions)
+            print(brea)
+            print(firstmoves)
+            print()
 print(count)
