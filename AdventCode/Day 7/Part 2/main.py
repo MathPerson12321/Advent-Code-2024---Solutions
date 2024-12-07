@@ -1,6 +1,6 @@
 '''Note, Day 7 P2 is a very long challenge and the code can take minutes to run.
-The code will print the line it is checking (out of the length of your puzzle input).
-Note that the answer is very large.'''
+The code will print the line it is checking (out of the length of your puzzle input). If you don't want to see it, comment out the print statement on line 20.
+Note that the answer is very large if you use your puzzle input from Advent of Code.'''
 import re
 vals = open("values.in","r")
 arr = []
