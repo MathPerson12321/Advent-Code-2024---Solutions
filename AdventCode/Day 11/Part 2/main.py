@@ -1,4 +1,5 @@
 import time
+
 vals = open("values.in","r")
 arr = vals.readline().strip().split(" ")
 
